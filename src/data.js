@@ -1,10 +1,9 @@
 /* Manejo de data */
-
-// esta es una función de ejemplo
-// puedes ver como agregamos la función a nuestro objeto global window
-
-const example = () => {
-  return 'example';
+const getData = (i) => {
+  for(let i in LOL['data']) {
+  arr.push([LOL['data'][i]['id'], LOL['data'][i]['img']]);
+  }
+  return arr;  
 };
+window.getData = getData;
 
-window.example = example;
