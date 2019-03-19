@@ -1,16 +1,15 @@
 global.window = global;
 global.assert = require('chai').assert;
-require('../src/data');
+require('../src/data/lol');
 require('./data.spec.js');
 
-
-describe('example', () => {
+describe('data', () => {
   
-  it('debería ser una función', () => {
-    assert.equal(typeof example, 'function');
+  it('debería ser un objeto', () => {
+    assert.equal(typeof data, 'object');
   });
 
-  it('debería retornar "example"', () => {
-    assert.equal(example(), 'example');
+  it('debería ser una función', () => {
+    assert.equal(typeof getData, 'function');
   });
 })

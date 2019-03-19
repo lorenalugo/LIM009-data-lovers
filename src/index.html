@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Data Lovers</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -10,17 +11,40 @@
     <header>
       <div class="logo">Logo goes here</div>
       <nav>
-        <ul>
-          <li>ROL</li>
-          <li>POSITION</li>
-          <li>ORDER BY</li>
-        </ul>
+          <div class="dropdown center border-box">
+            <button class="dropbtn">Rol <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content">
+              <a class="block" id="assassin" href="#">Assassin</a>
+              <a class="block" href="#">Fighter</a>
+              <a class="block" href="#">Mage</a>
+              <a class="block" href="#">Marksman</a>
+              <a class="block" href="#">Tank</a>
+              <a class="block" href="#">Support</a>
+            </div>
+          </div> 
+          <div class="dropdown border-box">
+            <button class="dropbtn">Position <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content">
+              <a class="block" href="#">Top</a>
+              <a class="block" href="#">Middle</a>
+              <a class="block" href="#">Support</a>
+            </div>
+          </div> 
+          <div class="dropdown border-box">
+            <button class="dropbtn">Order By <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content">
+              <a class="block" href="#">Name A-Z</a>
+              <a class="block" href="#">Name Z-A</a>
+            </div>
+          </div> 
       </nav>
     </header>
-    <main>
-      <div id="root" class="container auto"></div>
+    <main class="clear">
+      <section id="root" class="container auto"></section>
+      <section id="role-container" class="container none">
+      </section>
     </main>
-    <footer class="clear">
+    <footer class="clear black-bg white-color">
       <p class="center">Created by Lorena Lugo and Nikol Panebra</p>
     </footer>
     <script src="./data/lol/lol.js"></script>
