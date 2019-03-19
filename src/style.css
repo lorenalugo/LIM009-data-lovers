@@ -4,6 +4,26 @@ body {
 	font-size: 16px;
 }
 
+.black-bg {
+	background-color: #000000;
+}
+
+.brown-color{
+	color: #7d6033;
+}
+
+.dark-gray-bg{
+background-color:#1a1a1a;
+}
+
+.light-gray-color{
+	border: 2px solid #e9eaec;
+}
+
+.headline-color{
+	color: #937341;
+}
+
 .container {
 	width: 80%;
 }
@@ -44,13 +64,6 @@ body {
 	height: auto;
 }
 
-.black-bg {
-	background-color: #000;
-}
-
-.white-color {
-	color: #fff;
-}
 /**NavBar**/
 nav {
 	width: 100%;
