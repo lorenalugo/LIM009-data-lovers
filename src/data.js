@@ -1,18 +1,30 @@
 /* Manejo de data */
-const getData = () => {
-	let main = []; let info = []; let roles = [];
-	for(let i in LOL['data']) {
-		roles.push(LOL['data'][i]['tags']);
-		info.push(LOL['data'][i]['info']);
-		if(LOL['data'][i].hasOwnProperty('img')) {
-			main.push([LOL['data'][i]['id'], LOL['data'][i]['img'], LOL['data'][i]['blurb']]);
+const getAll = (data) => {
+	let localData = [];
+	for(let i in data) {//data = LOL['data']
+		if(data[i].hasOwnProperty('img')) {
+			localData.push([data[i]['id'], data[i]['img']]);
 		} else {
-			main.push([LOL['data'][i]['id'], './assets/placeholder-img.png', LOL['data'][i]['blurb']]);
+			localData.push([data[i]['id'], './assets/placeholder.png']);
 		}
 	}
-	return {main: main, info: info, roles: roles};
+	return localData; //localData = [i, id, img]
 };
 
+const roleFilter = (input, data) => {//data = LOL['data']
+	let newArr = [];
+	let filteredArray = [];
+	for (let i in data) {
+	newArr = data[i]['tags'].filter((role) => {//newArr may have results if it's true or not if it's false
+		return role === input;
+	});
+	if(newArr.length !== 0) {
+		filteredArray.push([data[i]['id'], data[i]['splash'], data[i]['blurb']]);
+	}
+	}
+	return filteredArray;//filteredArr = [id, splash, blurb]	
+}
+/*
 const roleFilter = (role, arr) => {
   let roleArr = [];
   for (let i = 0; i < arr.length; i++) {
@@ -23,5 +35,7 @@ const roleFilter = (role, arr) => {
 	}	
   }
   return roleArr;
-}
-window.getData = getData;
+}*/
+window.getAll = getAll;
+window.roleFilter = roleFilter;
+
