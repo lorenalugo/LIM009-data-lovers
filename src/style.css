@@ -2,6 +2,7 @@
 body {
 	margin: 0;
 	font-size: 16px;
+	color: #ff9c00;
 }
 
 p {
@@ -191,3 +192,13 @@ footer {
 	width: 8.33333%;
 }
 }
+
+.card-size{
+	width: 50%;
+	height: auto;
+}
+.card-img-position{
+	margin-left: 5%;
+	justify-content: start;
+	display: flex;
+	}
