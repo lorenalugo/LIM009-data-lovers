@@ -38,6 +38,9 @@ const displayBlock = (showId, hideId) => {
 document.addEventListener("DOMContentLoaded", () => {
   arr = getAll(LOL['data']);
   printAll(arr);
+  const profile = championDetails('Aatrox');
+  printDetails(profile);
+
 });
 /*menu buttons events*/
 const assassinBtn = document.getElementById('assassin');
@@ -87,3 +90,19 @@ support.addEventListener('click', () => {
 	printRoles(arrFiltered);
 	displayBlock('role-container', 'root');	
 });
+
+/* mostrar 2da pantalla*/
+
+let profile = [];
+const printDetails = (profile) => {
+const info = `<div class="container">
+<img class="card-size card-img-position" src="${profile[2]}" alt="${profile[0]}">
+<h3>${profile[0]}</h3> 
+<p>${profile[1]}</p>
+<p>${profile[3]}<p>
+</div>`;
+document.getElementById('detailsContainer').innerHTML = info;
+};
+
+	//const info = `<div> id="${championDetails[0], profile[1], profile[2], profile[3]}" </div>`
+	//;
