@@ -5,7 +5,7 @@ let arr = [];
 const printAll = (arr) => {//arr = [id, img]
 	for(let i = 0; i < arr.length; i++) {
 		const item = `<div class="col-xs-2 col-md-1 border-box gray-color">
-						<img class="block auto img-png" src="${arr[i][1]}" alt="${arr[i][0]}-image"/>
+						<img class="block auto img-png" src="${arr[i][1]}" alt="${arr[i][0]}"/>
 					  </div>`;
 		document.getElementById('root').insertAdjacentHTML("beforeend", item);
 	}
@@ -87,3 +87,8 @@ support.addEventListener('click', () => {
 	printRoles(arrFiltered);
 	displayBlock('role-container', 'root');	
 });
+/*end menu buttons*/
+const gridClickImg = document.getElementById('root');
+gridClickImg.addEventListener('click', (e) => {
+	console.log(e.target.alt); //porque el value proviene del object-keys (nombres de las propiedades del objeto data)
+})

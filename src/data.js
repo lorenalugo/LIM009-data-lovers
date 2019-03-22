@@ -8,7 +8,7 @@ const getAll = (data) => {
 			localData.push([data[i]['id'], './assets/placeholder.png']);
 		}
 	}
-	return localData; //localData = [i, id, img]
+	return localData; //localData = [id, img]
 };
 
 const roleFilter = (input, data) => {//data = LOL['data']
