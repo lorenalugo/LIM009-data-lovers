@@ -7,7 +7,10 @@
   },
   "extends": "eslint:recommended",
   "globals": {
-    "getData": false,
+    "getAll": false,
     "LOL": false,
+    "roleFilter": false,
+    "championDetails": false,
+    "sortData": false,
   }
 }
