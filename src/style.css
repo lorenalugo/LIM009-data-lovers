@@ -149,13 +149,6 @@ nav {
 	padding: 0 20px;
 }
 
-.dropdown {
-  float: left;
-  font-size: 1rem;
-  padding: 14px 10px;
-  text-decoration: none;
-}
-
 .dropdown .dropbtn {
   font-size: 1rem;  
   border: none;
@@ -187,6 +180,9 @@ nav {
   background-color: #ddd;
 }
 
+.menu-btn {
+	width: 50px;
+}
 /**Footer**/
 footer {
   padding: 30px 20px 10px 20px;
@@ -226,3 +222,10 @@ footer {
 	justify-content: start;
 	display: flex;
 	}
+
+.dropdown {
+  float: left;
+  font-size: 1rem;
+  padding: 14px 10px;
+  text-decoration: none;
+}
