@@ -1,4 +1,4 @@
-/* Manejo de data */
+/*gets all champions (id and image)*/
 const getAll = (data) => {
 	let localData = [];
 	for(let i in data) {//data = LOL['data']
@@ -8,15 +8,16 @@ const getAll = (data) => {
 			localData.push([data[i]['id'], './assets/placeholder.png']);
 		}
 	}
-	return localData; //localData = [i, id, img]
+	return localData; //localData = [id, img]
 };
 
-const roleFilter = (input, data) => {//data = LOL['data']
-	let newArr = []; //todos los campeones del mismo rol
-	let filteredArray = [];//información  elegida a mostrar en html
+/*filters the champions by role*/
+const roleFilter = (data, condition) => {//data = LOL['data']
+	let newArr = [];
+	let filteredArray = [];
 	for (let i in data) {
 	newArr = data[i]['tags'].filter((role) => {//newArr may have results if it's true or not if it's false
-		return role === input;
+		return role === condition;
 	});
 	if(newArr.length !== 0) {
 		filteredArray.push([data[i]['id'], data[i]['splash'], data[i]['info']]);
@@ -47,8 +48,22 @@ const result = [championsValue[index]['name'], championsValue[index]['title'],
 		championsValue[index]['splash'], championsValue[index]['blurb'], championsValue[index]
 		['info'], championsValue[index]['stats']];
 return result;// [name, title, imagen, blurb, {info}, {stats} ]
+
+/*sorts champions by skills*/
+const sortData = (data, sortBy, sortOrder) => { //parameters: (LOL['data'], 'attack', ascendent)
+	const championsData = Object.values(data);
+	if(sortOrder === 'descendent') {
+	const descendentSort = championsData.sort((a, b) => { return b['info'][sortBy] - a['info'][sortBy]});
+	return descendentSort;		
+	}
+	else {
+	const ascendentSort = championsData.sort((a, b) => { return a['info'][sortBy] - b['info'][sortBy]});
+	return ascendentSort;
+	}
+
 }
 
 window.getAll = getAll;
 window.roleFilter = roleFilter;
-
+window.championDetails = championDetails;
+window.sortData = sortData;
