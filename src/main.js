@@ -2,7 +2,7 @@
 /*vars*/
 let arr = [];
 /*functions*/
-const printAll = (arr) => {//arr = [id, img]
+const printAll = (arr) => {//arr = [[id, img], [id, img], [id, img], [id, img]]
 	for(let i = 0; i < arr.length; i++) {
 		const item = `<div class="col-xs-2 col-md-1 border-box gray-color">
 						<img class="block auto img-png" src="${arr[i][1]}" alt="${arr[i][0]}"/>
@@ -10,7 +10,8 @@ const printAll = (arr) => {//arr = [id, img]
 		document.getElementById('root').insertAdjacentHTML("beforeend", item);
 	}
 }
-const printRoleCard = (roleArr) => {//roleArr = [id, splash, blurb]
+
+const printRoleCard = (roleArr) => {//roleArr = [id, splash, info]
 	for (let i = 0; i < roleArr.length; i++) {
 		const str = `<div class="row headline-color auto">
 						<div class="col-xs-12 col-md-3">
@@ -28,16 +29,6 @@ const printRoleCard = (roleArr) => {//roleArr = [id, splash, blurb]
 	}
 	//document.getElementById('role-container').innerHTML = row;
 }
-//prints all champions info
-const printDetails = (profile) => {
-const info = `<div class="container">
-<img class="card-size card-img-position" src="${profile[2]}" alt="${profile[0]}">
-<h3>${profile[0]}</h3> 
-<p>${profile[1]}</p>
-<p>${profile[3]}<p>
-</div>`;
-document.getElementById('detailsContainer').innerHTML = info;
-};
 
 const printSortCard = (sortArr, id) => {
 	for (let i = 0; i < sortArr.length-1; i++) {
@@ -64,6 +55,9 @@ const displayBlock = (showId, hideId) => {
 document.addEventListener("DOMContentLoaded", () => {
   arr = getAll(LOL['data']);
   printAll(arr);
+  const profile = championDetails('Aatrox');
+  printDetails(profile);
+
 });
 /*menu buttons events*/
 const assassinBtn = document.getElementById('assassin');
@@ -72,7 +66,7 @@ assassinBtn.addEventListener('click', () => {
 	const arrFiltered = roleFilter(LOL['data'], 'Assassin');
 	printRoleCard(arrFiltered);
 	displayBlock('role-container', 'root');
-	displayBlock('role-container', 'detailsContainer');
+	displayBlock('role-container', 'detailsContainer');//(muestra, oculta)
 });
 
 const fighterBtn = document.getElementById('fighter');
@@ -117,8 +111,64 @@ supportBtn.addEventListener('click', () => {
 	const arrFiltered = roleFilter(LOL['data'], 'Support');
 	printRoleCard(arrFiltered);
 	displayBlock('role-container', 'root');	
-	displayBlock('role-container', 'detailsContainer');
 });
+
+/* mostrar 2da pantalla*/
+
+let profile = [];
+const printDetails = (profile) => { // [name, title, img, blurb, {info}, {stats} ] // copia todos los elementos, sean arrays o contenido de objetos
+const info =`<div class="col-xs-12 center profiles">
+				<div>
+				<h2>${profile[0]}</h2>
+				<h3>${profile[1]}</h3>
+				</div> 
+
+				<div class="col-xs-12 col-md-4 center">
+				<figure> 
+				<img class="card-size center" src="${profile[2]}" alt="${profile[0]}">
+				<p class="blurb">${profile[3]}</p>
+				</figure>
+				</div>	
+
+				<div class="white-color col-xs-12 col-md-8 description center"> 
+				<p>Attack: ${profile[4]['attack']}</p>
+				<p>Defense: ${profile[4]['defense']}</p>
+				<p>Magic: ${profile[4]['magic']}</p>
+				<p>Difficulty: ${profile[4]['difficulty']}</p>
+				</div>
+				
+				<div>STATS</div>
+				
+				<div class="col-xs-12 col-md-6"> 
+				<p>Health Points (HP): ${profile[5]['hp']}</p>
+				<p>Health Points per level : ${profile[5]['hpperlevel']}</p>
+				<p>Magic Points (MP): ${profile[5]['mp']}</p>
+				<p>Magic Points per level: ${profile[5]['mpperlevel']}</p>
+				<p>Move's speed: ${profile[5]['movespeed']}</p>
+				<p>Armor: ${profile[5]['armor']}</p>
+				<p>Armor per level: ${profile[5]['armorperlevel']}</p>
+				<p>Spell block: ${profile[5]['spellblock']}</p>
+				<p>Spell block per level: ${profile[5]['spellblockperlevel']}</p>
+				<p>Attack range: ${profile[5]['attackrange']}</p>
+				</div>
+
+				<div class="col-xs-12 col-md-6">
+				<p>HP Regeneration Points: ${profile[5]['hpregen']}</p>
+				<p>HP Regeneration Points per level: ${profile[5]['hpregenperlevel']}</p>
+				<p>MP Regenaration Points: ${profile[5]['mpregen']}</p>
+				<p>MP Regenaration Points per level: ${profile[5]['mpregenperlevel']}</p>
+				<p>Critical: ${profile[5]['crit']}</p>
+				<p>Critical per level: ${profile[5]['critperlevel']}</p>
+				<p>Attack Damage: ${profile[5]['attackdamage']}</p>
+				<p>Attack Damage per level: ${profile[5]['attackdamageperlevel']}</p>
+				<p>Attack speed offset: ${profile[5]['attackspeedoffset']}</p>
+				<p>Attack speed per level: ${profile[5]['attackspeedperlevel']}</p>
+				</div>
+
+			</div>`;
+document.getElementById('detailsContainer').innerHTML = info;
+};
+	
 /*end menu buttons*/
 const gridClickImg = document.getElementById('root');
 gridClickImg.addEventListener('click', (e) => {
