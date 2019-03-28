@@ -79,6 +79,17 @@ p {
 	float: left;
 }
 
+.float-right{
+	float: right;
+}
+.in-line{
+	display: inline-block;
+}
+
+.profiles .btn{
+	margin-top: 10px;
+}
+
 .block, .dropdown:hover .dropdown-content {
 	display: block;
 }
@@ -106,6 +117,13 @@ form {
 	margin: 10px;
 }
 
+
+.profiles{
+	border: 2px solid #c9aa71;
+	padding: 10px 30px;
+	margin-bottom: 20px;
+}
+ 
 /*Colors*/
 .black-bg {
 	background-color: #000000;
@@ -220,6 +238,10 @@ footer {
 	float: left;
 	width: 50%;
 }
+.description {
+	font-size: 1.2em;
+padding-left: 50px;
+}
 }
 
 @media screen and (min-width: 1024px) {
@@ -231,6 +253,8 @@ footer {
 	float: left;
 	width: 8.33333%;
 }
+
+
 }
 
 .card-size2{
@@ -246,26 +270,13 @@ footer {
 
 /*2da pantalla*/
 
-.profiles{
-	width: 100%;
-	height: auto;
-	justify-content: center;
-}
-
-.description {
-	font-size: 1.2em;
-}
 /*bienvenida*/
 .bienvenida img {
 	width: 100vw;
 	height: auto;
 }
 /*champion's guide logo*/
-.logo img{
-	width: 25%;
-	height: auto;
-	}
-	
+
 	.blurb {
 		font-size: 0.8em;
 }

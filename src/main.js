@@ -108,38 +108,36 @@ supportBtn.addEventListener('click', () => {
 	const arrFiltered = roleFilter(LOL['data'], 'Support');
 	printRoleCard(arrFiltered);
 	displayBlock('role-container', 'root');	
-<<<<<<< HEAD
 	displayBlock('role-container', 'detailsContainer');
-});
-=======
 });
 
 /* mostrar 2da pantalla*/
 
 let profile = [];
 const printDetails = (profile) => { // [name, title, img, blurb, {info}, {stats} ] // copia todos los elementos, sean arrays o contenido de objetos
-const info =`<div class="col-xs-12 center profiles">
+const info =`<div class="col-xs-12 profiles border-box">
 				<div>
-				<h2>${profile[0]}</h2>
+				<h2 class="in-line">${profile[0]}</h2>
+				<button class="btn float-right"> HOME </button>
 				<h3>${profile[1]}</h3>
 				</div> 
-
-				<div class="col-xs-12 col-md-4 center">
-				<figure> 
-				<img class="card-size center" src="${profile[2]}" alt="${profile[0]}">
+				<div>
+				<div class="col-xs-12 col-md-4 ">
+				<figure class="auto"> 
+				<img class="card-size2 center" src="${profile[2]}" alt="${profile[0]}">
 				<p class="blurb">${profile[3]}</p>
 				</figure>
 				</div>	
 
-				<div class="white-color col-xs-12 col-md-8 description center"> 
+				<div class="white-color col-xs-12 col-md-8 description border-box"> 
 				<p>Attack: ${profile[4]['attack']}</p>
 				<p>Defense: ${profile[4]['defense']}</p>
-				<p>Magic: ${profile[4]['magic']}</p>
+				<p>Mana: ${profile[4]['magic']}</p>
 				<p>Difficulty: ${profile[4]['difficulty']}</p>
 				</div>
-				
-				<div>STATS</div>
-				
+				</div>
+				<div class="clear">
+				<h3 class="center light-gold-color">STATS</h3>
 				<div class="col-xs-12 col-md-6"> 
 				<p>Health Points (HP): ${profile[5]['hp']}</p>
 				<p>Health Points per level : ${profile[5]['hpperlevel']}</p>
@@ -164,13 +162,12 @@ const info =`<div class="col-xs-12 center profiles">
 				<p>Attack Damage per level: ${profile[5]['attackdamageperlevel']}</p>
 				<p>Attack speed offset: ${profile[5]['attackspeedoffset']}</p>
 				<p>Attack speed per level: ${profile[5]['attackspeedperlevel']}</p>
+					</div>
 				</div>
-
 			</div>`;
 document.getElementById('detailsContainer').innerHTML = info;
 };
 	
->>>>>>> 374423ea8d11e142332d68b0d0960227ca8e05e0
 /*end menu buttons*/
 const gridClickImg = document.getElementById('root');
 gridClickImg.addEventListener('click', (e) => {
