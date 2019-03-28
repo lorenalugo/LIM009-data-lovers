@@ -132,7 +132,7 @@ const info =`<div class="col-xs-12 profiles border-box">
 				<div class="white-color col-xs-12 col-md-8 description border-box"> 
 				<p>Attack: ${profile[4]['attack']}</p>
 				<p>Defense: ${profile[4]['defense']}</p>
-				<p>Magic: ${profile[4]['magic']}</p>
+				<p>Mana: ${profile[4]['magic']}</p>
 				<p>Difficulty: ${profile[4]['difficulty']}</p>
 				</div>
 				</div>
@@ -164,6 +164,7 @@ const info =`<div class="col-xs-12 profiles border-box">
 				<p>Attack speed per level: ${profile[5]['attackspeedperlevel']}</p>
 				</div>
 				</div>
+
 			</div>`;
 document.getElementById('detailsContainer').innerHTML = info;
 };

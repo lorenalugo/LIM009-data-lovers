@@ -88,7 +88,7 @@ p {
 }
 
 .profiles .btn {
-	margin-top:10px;
+	margin-top: 10px;
 }
 
 .block, .dropdown:hover .dropdown-content {
@@ -241,7 +241,6 @@ footer {
 .description {
 	font-size: 1.2em;
 	padding-left: 50px;
-}
 }
 
 @media screen and (min-width: 1024px) {
