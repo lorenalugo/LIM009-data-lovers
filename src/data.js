@@ -25,31 +25,18 @@ const roleFilter = (data, condition) => {//data = LOL['data']
 	}
 	return filteredArray;//filteredArr = [id, splash, info] (array de arrays)	
 }
-
-/*
-const roleFilter = (role, arr) => {
-  let roleArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr[i].length; j++) {
-      if(arr[i][j] === role) {
-        roleArr.push(i);
-      } 
-	}	
-  }
-  return roleArr;
-}*/
 //2dapantalla
-const championDetails = (i) => {//
-const championsId = Object.keys(LOL['data']);//array con nombres de los campeones //championsId = [Aatrox, Ahri, Akali,...,Zyra ] 
+const championDetails = (data, i) => {//
+const championsId = Object.keys(data);//array con nombres de los campeones //championsId = [Aatrox, Ahri, Akali,...,Zyra ] 
 const index = championsId.indexOf(i);//posición de cada propiedad (campeón) e.g.:  [2] = Akali
 //console.log(i);
 //console.log(index);
-const championsValue = Object.values(LOL['data']);//array con los valores de cada propiedad de cada campeón
+const championsValue = Object.values(data);//array con los valores de cada propiedad de cada campeón
 const result = [championsValue[index]['name'], championsValue[index]['title'], 
 		championsValue[index]['splash'], championsValue[index]['blurb'], championsValue[index]
 		['info'], championsValue[index]['stats']];
 return result;// [name, title, imagen, blurb, {info}, {stats} ]
-
+}
 /*sorts champions by skills*/
 const sortData = (data, sortBy, sortOrder) => { //parameters: (LOL['data'], 'attack', ascendent)
 	const championsData = Object.values(data);
