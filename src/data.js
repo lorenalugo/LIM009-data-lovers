@@ -23,7 +23,7 @@ const roleFilter = (data, condition) => {//data = LOL['data']
 		filteredArray.push([data[i]['id'], data[i]['splash'], data[i]['info']]);
 	}
 	}
-	return filteredArray;//filteredArr = [id, splash, info] (array de arrays)	
+	return filteredArray;//filteredArr = [id, splash, [info]] (array de arrays)	
 }
 //2dapantalla
 const championDetails = (data, i) => {//
@@ -35,18 +35,17 @@ const championsValue = Object.values(data);//array con los valores de cada propi
 const result = [championsValue[index]['name'], championsValue[index]['title'], 
 		championsValue[index]['splash'], championsValue[index]['blurb'], championsValue[index]
 		['info'], championsValue[index]['stats']];
-return result;// [name, title, imagen, blurb, {info}, {stats} ]
+return result;// [name, title, imagen, blurb, {info}, {stats}]
 }
 /*sorts champions by skills*/
-const sortData = (data, sortBy, sortOrder) => { //parameters: (LOL['data'], 'attack', ascendent)
-	const championsData = Object.values(data);
+const sortData = (data, sortBy, sortOrder) => { //parameters: ([id,splash,[info]], 'attack', ascendent)
 	if(sortOrder === 'descendent') {
-	const descendentSort = championsData.sort((a, b) => { return b['info'][sortBy] - a['info'][sortBy]});
-	return descendentSort;		
+	const descendentSort = data.sort((a, b) => { return b[2][sortBy] - a[2][sortBy]});
+	return descendentSort;//[id,splash,[info]]
 	}
 	else {
-	const ascendentSort = championsData.sort((a, b) => { return a['info'][sortBy] - b['info'][sortBy]});
-	return ascendentSort;
+	const ascendentSort = data.sort((a, b) => { return a[2][sortBy] - b[2][sortBy]});
+	return ascendentSort;//[id,splash,[info]]
 	}
 
 }

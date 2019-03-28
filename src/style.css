@@ -113,11 +113,6 @@ h2 a {
 	margin: 10px;
 }
 
-form {
-	float: right;
-	margin: 10px;
-}
-
 .profiles {
 	border: 2px solid #c9aa71;
 	padding: 10px 30px;
@@ -157,15 +152,6 @@ form {
 
 .headline-color {
 	color: #937341;
-}
-/**search input**/
-input {
-  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  font-size: 14px; /* Increase font-size */
-  border: none;
 }
 
 /**NavBar**/
@@ -208,6 +194,12 @@ nav {
 .menu-btn {
 	width: 50px;
 }
+
+/**Submenu**/
+.submenu {
+
+}
+
 /**Footer**/
 footer {
   padding: 30px 20px 10px 20px;

@@ -13,3 +13,6 @@ describe('data', () => {
     assert.equal(typeof getData, 'function');
   });
 })
+
+//expect().toequal
+//expect().toBe
