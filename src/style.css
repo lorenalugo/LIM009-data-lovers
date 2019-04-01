@@ -67,7 +67,7 @@ p {
 	text-align: center;
 }
 
-.clear {
+.clear, main, aside {
 	clear: both;
 }
 
@@ -196,6 +196,12 @@ nav {
 }
 
 /**Submenu**/
+.submenu a {
+padding: 12px 10px;
+  text-decoration: none;
+  text-align: left;
+}
+
 /**Footer**/
 footer {
   padding: 30px 20px 10px 20px;
