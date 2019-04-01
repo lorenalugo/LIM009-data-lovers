@@ -133,7 +133,7 @@ const printDetails = (profile) => { // [name, title, img, blurb, {info}, {stats}
 				<p>Attack range: ${profile[5]['attackrange']}</p>
 				</div>
 				<div class="col-xs-12 col-md-6">
-				<p>HP Regeneration Points: ${profile[5]['hpregen']}</p>
+				<p>HP Regeneration Points: ${[5]['hpregen']}</p>
 				<p>HP Regeneration Points per level: ${profile[5]['hpregenperlevel']}</p>
 				<p>MP Regenaration Points: ${profile[5]['mpregen']}</p>
 				<p>MP Regenaration Points per level: ${profile[5]['mpregenperlevel']}</p>
@@ -174,12 +174,28 @@ sortMenuBtn.addEventListener('click', (event) => {
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
-
-
 /*
 const attack = document.getElementById('attack');
 attack.addEventListener('click', () => {
 	sortData(LOL['data'], 'attack');
 })
 */
+
+// s t a t s 
+const statsBtn = document.getElementById('stats');
+statsBtn.addEventListener('click', () => {
+	computeStats(arrFiltered);
+});
+
+let rolDifficultyStats = computeStats();
+const printStats = (rolDifficultyStats) => {// promedio de la dificultad de cada rol -> [number]
+  const difficultyByRoL = `<div class="col-xs-12 border-box"> 
+												<div> 
+												<h2 class="white-color">Difficulty's stats for each rol</h2>
+												<p>${rolDifficultyStats}</p>
+												</div>
+									</div>
+									`;
+  document.getElementById('computeStats').innerHTML = difficultyByRoL;
+};
 

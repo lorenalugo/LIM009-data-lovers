@@ -1,3 +1,29 @@
+#Champion's Guide
+##Preámbulo y contexto general
+
+##Elección de la data
+Se escogió la data sobre las características de los campeones porque ambas encontramos interesantes la divesidad de datos. Además, de alguna forma, estábamos familiarizadas con el juego (LOL).
+
+##¿Cómo elegí al usuario?
+De acuerdo a la data obtenida, nos dispusimos a investigar sobre la dinámica del juego, la importancia que reciben estos datos para los jugadores y la manera en que debería ser mostrada. Así mismo, preguntamos a jugadores reales sobre 
+
+##Proceso de elección del producto
+Luego de la investigación adecuada, se llegó a la conclusión que era popular la idea de ordenar los datos alfabéticamente así como filtrarlos de acuerdo al tipo de rol a la vez que, ya ordenados por rol, ordenarlos en orden descendente por quienes tenían más ataque, defensa, dificultad de manejo y cantidad de maná (poder mágico),
+
+##¿Qué problema del usuario soluciona?
+dado que las características de los personajes (primariad y secundarias) no son mostradas con claridad antes del inicio de una partida
+
+## Objetivos de los usuarios en relación al producto (cuándo lo usarían)
+
+
+##¿Cómo funciona **Champion's Guide**?
+
+###Pasos a seguir
+1) 
+##Elección de opciones de diseño e interacción
+
+__________________________
+
 # Data Lovers
 
 ## Índice
