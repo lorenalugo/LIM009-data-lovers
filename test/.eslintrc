@@ -4,6 +4,6 @@
     "jest": true
   },
   "globals": {
-    "assert": false
+   
   }
 }

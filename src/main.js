@@ -1,67 +1,40 @@
 /* Manejo del DOM */
-/* vars*/
+/* vars */
 let arr = [];
-/* functions*/
-const printAll = (arr) => {// arr = [[id, img], [id, img], [id, img], [id, img]]
+let arrFiltered = [];
+/* functions */
+const printAll = (arr) => { // arr = [[id, img], [id, img], [id, img], [id, img]]
   for (let i = 0; i < arr.length; i++) {
-    const item = `<div class="col-xs-2 col-md-1 border-box gray-color">
-						<img class="block auto img-png" src="${arr[i][1]}" alt="${arr[i][0]}"/>
-					  </div>`;
+    const item = `<div class="col-xs-2 col-md-1 border-box gray-color"><img class="block auto img-png" src="${arr[i][1]}" alt="${arr[i][0]}"/></div>`;
     document.getElementById('root').insertAdjacentHTML('beforeend', item);
   }
 };
 
-const printRoleCard = (roleArr) => {// roleArr = [id, splash, info]
+const printCard = (roleArr) => {// roleArr = [id,splash,[info]]
   for (let i = 0; i < roleArr.length; i++) {
-    const str = `<div class="row headline-color auto">
-						<div class="col-xs-12 col-md-3">
-						<figure class="auto">
-							<img class="border-box" src="${roleArr[i][1]}" alt="${roleArr[i][0]}-image" />
-						</figure>
-						</div>
-          				<div class="col-xs-12 col-md-9 border-box content-card">
-          					<h3 class="auto">${roleArr[i][0]}</h3><p>${roleArr[i][2]}</p>
-          					<button data-champion="${roleArr[i][0]}" class="btn block" type="button">SEE MORE</button>
-          				</div>
-          			</div>`;
+    const str = `<div class="row headline-color auto"><div class="col-xs-12 col-md-3"><figure class="auto"><img class="border-box" src="${roleArr[i][1]}" alt="${roleArr[i][0]}-image" /></figure></div><div class="col-xs-12 col-md-9 border-box content-card"><h3 class="auto">${roleArr[i][0]}</h3><ul><li>Attack: ${roleArr[i][2]['attack']}</li><li>defense: ${roleArr[i][2]['defense']}</li><li>Magic: ${roleArr[i][2]['magic']}</li><li>Difficulty: ${roleArr[i][2]['difficulty']}</li></ul><button data-champion="${roleArr[i][0]}" class="btn block" type="button">SEE MORE</button></div></div>`;
     // row.push(str);
     document.getElementById('role-container').insertAdjacentHTML('beforeend', str);
   }
-  // document.getElementById('role-container').innerHTML = row;
 };
 
-const printSortCard = (sortArr, id) => {
-  for (let i = 0; i < sortArr.length - 1; i++) {
-    const str = `<div class="row headline-color auto">
-						<div class="col-xs-12 col-md-3">
-						<figure class="auto">
-							<img class="border-box" src="${sortArr[i]['splash']}" alt="${sortArr[i]['id']}-image" />
-						</figure>
-						</div>
-          				<div class="col-xs-12 col-md-9 border-box content-card">
-          					<h3 class="auto">${sortArr[i]['name']}, ${id}: ${sortArr[i]['info'][id]}</h3><p>${sortArr[i]['blurb']}</p>
-          					<button data-champion="${sortArr[i]['id']}" class="btn block" type="button">SEE MORE</button>
-          				</div>
-          			</div>`;
-    document.getElementById('role-container').insertAdjacentHTML('beforeend', str);
-  }
-};
 // shows and hides a block element
 const displayBlock = (showId, hideId) => {
   document.getElementById(hideId).classList.add('none');
   document.getElementById(showId).classList.remove('none');
 };
-/* events*/
+/* events */
 document.addEventListener('DOMContentLoaded', () => {
   arr = getAll(LOL['data']);
   printAll(arr);
 });
-/* menu buttons events*/
+/* menu buttons events */
 const assassinBtn = document.getElementById('assassin');
 assassinBtn.addEventListener('click', () => {
   document.getElementById('role-container').innerHTML = '';
-  const arrFiltered = roleFilter(LOL['data'], 'Assassin');
-  printRoleCard(arrFiltered);
+  document.getElementById('submenu').classList.remove('none');
+  arrFiltered = roleFilter(LOL['data'], 'Assassin');
+  printCard(arrFiltered);
   displayBlock('role-container', 'root');
   displayBlock('role-container', 'detailsContainer');// (muestra, oculta)
 });
@@ -69,8 +42,9 @@ assassinBtn.addEventListener('click', () => {
 const fighterBtn = document.getElementById('fighter');
 fighterBtn.addEventListener('click', () => {
   document.getElementById('role-container').innerHTML = '';
-  const arrFiltered = roleFilter(LOL['data'], 'Fighter');
-  printRoleCard(arrFiltered);
+  document.getElementById('submenu').classList.remove('none');
+  arrFiltered = roleFilter(LOL['data'], 'Fighter');
+  printCard(arrFiltered);
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
@@ -78,8 +52,9 @@ fighterBtn.addEventListener('click', () => {
 const mageBtn = document.getElementById('mage');
 mageBtn.addEventListener('click', () => {
   document.getElementById('role-container').innerHTML = '';
-  const arrFiltered = roleFilter(LOL['data'], 'Mage');
-  printRoleCard(arrFiltered);
+  document.getElementById('submenu').classList.remove('none');
+  arrFiltered = roleFilter(LOL['data'], 'Mage');
+  printCard(arrFiltered);
   displayBlock('role-container', 'root');
   displayBlock('role-container', 'detailsContainer');
 });
@@ -87,8 +62,9 @@ mageBtn.addEventListener('click', () => {
 const marksmanBtn = document.getElementById('marksman');
 marksmanBtn.addEventListener('click', () => {
   document.getElementById('role-container').innerHTML = '';
-  const arrFiltered = roleFilter(LOL['data'], 'Marksman');
-  printRoleCard(arrFiltered);
+  document.getElementById('submenu').classList.remove('none');
+  arrFiltered = roleFilter(LOL['data'], 'Marksman');
+  printCard(arrFiltered);
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
@@ -96,8 +72,9 @@ marksmanBtn.addEventListener('click', () => {
 const tankBtn = document.getElementById('tank');
 tankBtn.addEventListener('click', () => {
   document.getElementById('role-container').innerHTML = '';
-  const arrFiltered = roleFilter(LOL['data'], 'Tank');
-  printRoleCard(arrFiltered);
+  document.getElementById('submenu').classList.remove('none');
+  arrFiltered = roleFilter(LOL['data'], 'Tank');
+  printCard(arrFiltered);
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
@@ -105,15 +82,15 @@ tankBtn.addEventListener('click', () => {
 const supportBtn = document.getElementById('support');
 supportBtn.addEventListener('click', () => {
   document.getElementById('role-container').innerHTML = '';
-  const arrFiltered = roleFilter(LOL['data'], 'Support');
-  printRoleCard(arrFiltered);
+  document.getElementById('submenu').classList.remove('none');
+  arrFiltered = roleFilter(LOL['data'], 'Support');
+  printCard(arrFiltered);
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
 
-/* mostrar 2da pantalla*/
+/* mostrar 2da pantalla */
 
-let profile = [];
 const printDetails = (profile) => { // [name, title, img, blurb, {info}, {stats} ] // copia todos los elementos, sean arrays o contenido de objetos
   const info = `<div class="col-xs-12 profiles border-box">
 				<div>
@@ -122,13 +99,12 @@ const printDetails = (profile) => { // [name, title, img, blurb, {info}, {stats}
 				<h3>${profile[1]}</h3>
 				</div> 
 				<div>
-				<div class="col-xs-12 col-md-4 ">
+				<div class="col-xs-12 col-md-4">
 				<figure class="auto"> 
 				<img class="card-size2 center" src="${profile[2]}" alt="${profile[0]}">
 				<p class="blurb">${profile[3]}</p>
 				</figure>
 				</div>	
-
 				<div class="white-color col-xs-12 col-md-8 description border-box"> 
 				<p>Attack: ${profile[4]['attack']}</p>
 				<p>Defense: ${profile[4]['defense']}</p>
@@ -150,7 +126,6 @@ const printDetails = (profile) => { // [name, title, img, blurb, {info}, {stats}
 				<p>Spell block per level: ${profile[5]['spellblockperlevel']}</p>
 				<p>Attack range: ${profile[5]['attackrange']}</p>
 				</div>
-profile
 				<div class="col-xs-12 col-md-6">
 				<p>HP Regeneration Points: ${[5]['hpregen']}</p>
 				<p>HP Regeneration Points per level: ${profile[5]['hpregenperlevel']}</p>
@@ -162,34 +137,35 @@ profile
 				<p>Attack Damage per level: ${profile[5]['attackdamageperlevel']}</p>
 				<p>Attack speed offset: ${profile[5]['attackspeedoffset']}</p>
 				<p>Attack speed per level: ${profile[5]['attackspeedperlevel']}</p>
-					</div>
+				</div>
 				</div>
 			</div>`;
   document.getElementById('detailsContainer').innerHTML = info;
 };
 	
-/* end menu buttons*/
+/* end menu buttons */
 const gridClickImg = document.getElementById('root');
-gridClickImg.addEventListener('click', (e) => {
+gridClickImg.addEventListener('click', (event) => {
   // console.log(e.target.alt); //porque el value proviene del object-keys (nombres de las propiedades del objeto data)
-  const profile = championDetails(LOL['data'], e.target.alt);
+  const profile = championDetails(LOL['data'], event.target.alt);
   printDetails(profile);
-  displayBlock('detailsContainer', 'root');// (muestra, oculta)
+  displayBlock('detailsContainer', 'root');
 });
 
 const seeMoreBtn = document.getElementById('role-container');
-seeMoreBtn.addEventListener('click', (e) => {
-  const profile = championDetails(LOL['data'], e.target.dataset.champion);
+seeMoreBtn.addEventListener('click', (event) => {
+  const profile = championDetails(LOL['data'], event.target.dataset.champion);
   printDetails(profile);
   displayBlock('detailsContainer', 'role-container');
 });
 
 const sortMenuBtn = document.getElementById('sort-menu');
-sortMenuBtn.addEventListener('click', (e) => {
+sortMenuBtn.addEventListener('click', (event) => {
   document.getElementById('role-container').innerHTML = '';
-  const sortResult = sortData(LOL['data'], e.target.dataset.skill, 'descendent');
+  const sortResult = sortData(arrFiltered, event.target.dataset.skill, 'descendent');
   // console.log(sortResult);
-  printSortCard(sortResult, e.target.dataset.skill);
+  printCard(sortResult);
+  document.getElementById('sort-condition').innerHTML = event.target.dataset.skill;
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
