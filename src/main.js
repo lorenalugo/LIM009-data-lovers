@@ -35,6 +35,7 @@ assassinBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Assassin');
   printCard(arrFiltered);
+  document.getElementById('sort-condition').innerHTML = 'Assassin';
   displayBlock('role-container', 'root');
   displayBlock('role-container', 'detailsContainer');// (muestra, oculta)
 });
@@ -45,6 +46,7 @@ fighterBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Fighter');
   printCard(arrFiltered);
+  document.getElementById('sort-condition').innerHTML = 'Fighter';
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
@@ -55,6 +57,7 @@ mageBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Mage');
   printCard(arrFiltered);
+  document.getElementById('sort-condition').innerHTML = 'Mage';
   displayBlock('role-container', 'root');
   displayBlock('role-container', 'detailsContainer');
 });
@@ -65,6 +68,7 @@ marksmanBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Marksman');
   printCard(arrFiltered);
+  document.getElementById('sort-condition').innerHTML = 'Marksman';
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
@@ -75,6 +79,7 @@ tankBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Tank');
   printCard(arrFiltered);
+  document.getElementById('sort-condition').innerHTML = 'Tank';
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
@@ -85,6 +90,7 @@ supportBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Support');
   printCard(arrFiltered);
+  document.getElementById('sort-condition').innerHTML = 'Support';
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
@@ -99,13 +105,13 @@ const printDetails = (profile) => { // [name, title, img, blurb, {info}, {stats}
 				<h3>${profile[1]}</h3>
 				</div> 
 				<div>
-				<div class="col-xs-12 col-md-4">
+				<div class="col-xs-12 col-md-8">
 				<figure class="auto"> 
 				<img class="card-size2 center" src="${profile[2]}" alt="${profile[0]}">
 				<p class="blurb">${profile[3]}</p>
 				</figure>
 				</div>	
-				<div class="white-color col-xs-12 col-md-8 description border-box"> 
+				<div class="white-color col-xs-12 col-md-4 description border-box"> 
 				<p>Attack: ${profile[4]['attack']}</p>
 				<p>Defense: ${profile[4]['defense']}</p>
 				<p>Mana: ${profile[4]['magic']}</p>
@@ -165,7 +171,6 @@ sortMenuBtn.addEventListener('click', (event) => {
   const sortResult = sortData(arrFiltered, event.target.dataset.skill, 'descendent');
   // console.log(sortResult);
   printCard(sortResult);
-  document.getElementById('sort-condition').innerHTML = event.target.dataset.skill;
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
