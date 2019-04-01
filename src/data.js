@@ -60,16 +60,33 @@ window.sortData = sortData;
 // if data[i].hasOwnProperty( info.tags["Fighter"])
 // if (array[i] === element)
 
-const computeStats = (data) => {
+const computeStats = (data, role) => {
   let stats = Object.values(data);// array de objetos (champions)
   // console.log(stats);
+  //filtrar por rol 
+  //let newArr = [];
+  //let filteredArray = [];
+  for (let i in data) {
+    newArr = data[i]['tags'].filter((role) => {// newArr may have results if it's true or not if it's false
+      return role;
+    });
+    //if (newArr.length !== 0) {
+      //filteredArray.push([data[i]['id'], data[i]['splash'], data[i]['info']]);
+    //}
+  }
+}
+  
+  //let rolStats = Object.values(rol);
+  //console.log(rolStats);
+
+
   for (let i = 0; i < stats.length; i++) { // itera por todos los campeones
     // console.log(stats[i].info.difficulty);
     let difficultyValues = stats.map(champion => champion.info.difficulty);// array con el valor de "difficulty" de todos los campeones
     // console.log(difficultyValues);
     let difficultyAverage = difficultyValues.reduce((sum, val) => sum + val) / 134;// un elemento con la suma de todos los valores de difficulty entre la cantidad de campeones
-    // console.log(difficultyAverage);
-    return difficultyAverage;
+    console.log(difficultyAverage);
+    
   }
 };
 

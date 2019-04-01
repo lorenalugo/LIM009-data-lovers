@@ -99,13 +99,13 @@ const printDetails = (profile) => { // [name, title, img, blurb, {info}, {stats}
 				<h3>${profile[1]}</h3>
 				</div> 
 				<div>
-				<div class="col-xs-12 col-md-4">
+				<div class="col-xs-12 col-md-7">
 				<figure class="auto"> 
 				<img class="card-size2 center" src="${profile[2]}" alt="${profile[0]}">
 				<p class="blurb">${profile[3]}</p>
 				</figure>
 				</div>	
-				<div class="white-color col-xs-12 col-md-8 description border-box"> 
+				<div class="white-color col-xs-12 col-md-5 description border-box"> 
 				<p>Attack: ${profile[4]['attack']}</p>
 				<p>Defense: ${profile[4]['defense']}</p>
 				<p>Mana: ${profile[4]['magic']}</p>
@@ -177,7 +177,7 @@ attack.addEventListener('click', () => {
 */
 
 // s t a t s 
-let rolDifficultyStats = computeStats(LOL.data);
+let rolDifficultyStats = computeStats(LOL.data, 'fighter');
 const printStats = (rolDifficultyStats) => {// promedio de la dificultad de cada rol -> [number]
   const difficultyByRoL = `<div class="col-xs-12 border-box"> 
 												<div> 
