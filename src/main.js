@@ -182,7 +182,12 @@ attack.addEventListener('click', () => {
 */
 
 // s t a t s 
-let rolDifficultyStats = computeStats(LOL.data, 'fighter');
+const statsBtn = document.getElementById('stats');
+statsBtn.addEventListener('click', () => {
+	computeStats(arrFiltered);
+});
+
+let rolDifficultyStats = computeStats();
 const printStats = (rolDifficultyStats) => {// promedio de la dificultad de cada rol -> [number]
   const difficultyByRoL = `<div class="col-xs-12 border-box"> 
 												<div> 

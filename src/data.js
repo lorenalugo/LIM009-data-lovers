@@ -48,45 +48,19 @@ const sortData = (data, sortBy, sortOrder) => { // parameters: ([id,splash,[info
   }
 };
 
+const computeStats = (data) => {// data = [id, splash, [info]] (array de arrays)
+  let newArr = [];
+  let difficultyAverage;
+  for (let i = 0; i < data.length; i++) { // itera por todos los campeones
+    newArr.push(data[i][2]['difficulty']); // array con los valores de difficulty de 1 rol en específico
+    difficultyAverage = newArr.reduce((sum, val) => sum + val) / newArr.length;// un elemento con la suma de todos los valores de difficulty entre la cantidad de campeones   
+  }
+  console.log(difficultyAverage);
+};
+
 window.getAll = getAll;
 window.roleFilter = roleFilter;
 window.championDetails = championDetails;
 window.sortData = sortData;
-// difficulty average of each rol
-// 1ro) entrar a data, lol, campeón, info, difficulty
-// 2do)obtener todos los valores de difficulty de campeones en un array
-// 3ro) iterar por todos los elementos del arrar
-// 4to) usar el método reduce para sumar los datos. luego dividirlos entre el total.
-// if data[i].hasOwnProperty( info.tags["Fighter"])
-// if (array[i] === element)
-
-const computeStats = (data, role) => {
-  let stats = Object.values(data);// array de objetos (champions)
-  // console.log(stats);
-  //filtrar por rol 
-  //let newArr = [];
-  //let filteredArray = [];
-  for (let i in data) {
-    newArr = data[i]['tags'].filter((role) => {// newArr may have results if it's true or not if it's false
-      return role;
-    });
-    //if (newArr.length !== 0) {
-      //filteredArray.push([data[i]['id'], data[i]['splash'], data[i]['info']]);
-    //}
-  }
-}
-  
-  //let rolStats = Object.values(rol);
-  //console.log(rolStats);
-
-
-  for (let i = 0; i < stats.length; i++) { // itera por todos los campeones
-    // console.log(stats[i].info.difficulty);
-    let difficultyValues = stats.map(champion => champion.info.difficulty);// array con el valor de "difficulty" de todos los campeones
-    // console.log(difficultyValues);
-    let difficultyAverage = difficultyValues.reduce((sum, val) => sum + val) / 134;// un elemento con la suma de todos los valores de difficulty entre la cantidad de campeones
-    console.log(difficultyAverage);
-    
-  }
-};
+window.computeStats = computeStats;
 
