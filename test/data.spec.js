@@ -234,7 +234,7 @@ describe('getAll', () => {
     expect(typeof getAll).toBe('function');
   });
   it('debería retornar un array', () => {
-    expect(typeof getAll()).toBe('object');
+    expect(Array.isArray(getAll())).toBe(true);
   });
   it('debería retornar output1 para input1', () => {
     expect(getAll(input1)).toEqual(output1);
@@ -246,7 +246,7 @@ describe('roleFilter', () => {
     expect(typeof roleFilter).toBe('function');
   });
   it('debería retornar un array', () => {
-    expect(typeof roleFilter()).toBe('object');
+    expect(Array.isArray(roleFilter())).toBe(true);
   });
   it('debería retornar output1 para input1', () => {
     expect(roleFilter(input1, 'Assassin')).toEqual(output2);
@@ -258,7 +258,7 @@ describe('sortData', () => {
     expect(typeof sortData).toBe('function');
   });
   it('debería retornar un array', () => {
-    expect(typeof sortData(output2, 'attack', 'descendent')).toBe('object');
+    expect(Array.isArray(sortData(output2, 'attack', 'descendent'))).toBe(true);
   });
   it('debería retornar output1 para input1', () => {
     expect(sortData(output2, 'attack', 'descendent')).toEqual(output3);
@@ -270,7 +270,7 @@ describe('championDetails', () => {
     expect(typeof championDetails).toBe('function');
   });
   it('debería retornar un array', () => {
-    expect(typeof championDetails(input1, 'LeeSin')).toBe('object');
+    expect(Array.isArray(championDetails(input1, 'LeeSin'))).toBe(true);
   });
   it('debería retornar output1 para input1', () => {
     expect(championDetails(input1, 'LeeSin')).toEqual(output4);
