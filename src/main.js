@@ -1,5 +1,6 @@
 /* Manejo del DOM */
 /* Conection to json data */
+let jsonData;
 fetch('./data/lol/lol.json')
   .then((response) => {
     if (!response.ok) {
@@ -8,8 +9,8 @@ fetch('./data/lol/lol.json')
     return response.json();
   })
   .then((json) => {
-    printAll(getAll(json.data));
-    //roleFilter(json.data);
+    jsonData = json.data;
+    printAll(getAll(jsonData));
   })
   .catch((error) => {
     console.log(`Error: ${error.message}`);
@@ -29,7 +30,7 @@ const roleMenuBtn = document.getElementById('menu-content');
 roleMenuBtn.addEventListener('click', (event) => {
   document.getElementById('role-container').innerHTML = '';
   document.getElementById('submenu').classList.remove('none');
-  arrFiltered = roleFilter(LOL['data'], event.target.id);
+  arrFiltered = roleFilter(jsonData, event.target.id);
   printCard(arrFiltered);
   document.getElementById('compute-stats').innerHTML = `Media Difficulty: ${computeStats(arrFiltered).toFixed(2)}`;// stats
   document.getElementById('sort-condition').innerHTML = event.target.id.toUpperCase();
@@ -54,7 +55,7 @@ menuBtn.addEventListener('click', () => {
 const gridClickImg = document.getElementById('root');
 gridClickImg.addEventListener('click', (event) => {
   // console.log(e.target.alt); //porque el value proviene del object-keys (nombres de las propiedades del objeto data)
-  const profile = championDetails(LOL['data'], event.target.alt);
+  const profile = championDetails(jsonData, event.target.alt);
   printDetails(profile);
   displayBlock('detailsContainer', 'root');
 });
@@ -149,9 +150,3 @@ const printDetails = (profile) => { // [name, title, img, blurb, {info}, {stats}
       </div>`;
   document.getElementById('detailsContainer').innerHTML = info;
 };
-
-/* events */
-// document.addEventListener('DOMContentLoaded', () => {
-  //arr = getAll(LOL['data']);
-  //printAll(arr);
-// });
