@@ -4,9 +4,11 @@ body {
 	font-size: 16px;
 	color: #ff9c00;
 	font-family: 'Lato', sans-serif;
-	background: url('./assets/League_Of_Legends.jpg');
+	background: url('./assets/League_Of_Legends.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 	background-size: cover;
-	background-repeat: no-repeat;
 }
 
 p {

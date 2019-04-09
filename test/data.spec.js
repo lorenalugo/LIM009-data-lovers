@@ -240,6 +240,9 @@ describe('getAll', () => {
   it('debería retornar output1 para input1', () => {
     expect(getAll(input1)).toEqual(output1);
   });
+  it('debería tener la misma longitud output1 y input1', () => {
+    expect(getAll(input1).length).toEqual(6);
+  });
 });
 
 describe('roleFilter', () => {
@@ -249,8 +252,11 @@ describe('roleFilter', () => {
   it('debería retornar un array', () => {
     expect(Array.isArray(roleFilter())).toBe(true);
   });
-  it('debería retornar output1 para input1', () => {
+  it('debería retornar output2 para input1', () => {
     expect(roleFilter(input1, 'Assassin')).toEqual(output2);
+  });
+  it('output2 debería tener una longitud menor a input1', () => {
+    expect(roleFilter(input1, 'Assassin').length).toBeLessThan(6);
   });
 });
 
@@ -259,10 +265,12 @@ describe('sortData', () => {
     expect(typeof sortData).toBe('function');
   });
   it('debería retornar un array', () => {
-    expect(Array.isArray(sortData(output2, 'attack', 'descendent'))).toBe(true);
+    expect(Array.isArray(sortData(output2, 'attack'))).toBe(true);
   });
-  it('debería retornar output1 para input1', () => {
-    expect(sortData(output2, 'attack', 'descendent')).toEqual(output3);
+  it('debería retornar output3 para input1', () => {
+    const dolly = [...output2];
+    expect(sortData(output2, 'attack')).toEqual(output3);
+    expect(dolly).toEqual(output2);
   });
 });
 
@@ -273,8 +281,11 @@ describe('championDetails', () => {
   it('debería retornar un array', () => {
     expect(Array.isArray(championDetails(input1, 'LeeSin'))).toBe(true);
   });
-  it('debería retornar output1 para input1', () => {
+  it('debería retornar output4 para input1', () => {
     expect(championDetails(input1, 'LeeSin')).toEqual(output4);
+  });
+  it('debería contener LeeSin para input1', () => {
+    expect(championDetails(input1, 'LeeSin')).toEqual(expect.arrayContaining(['Lee Sin']));
   });
 });
 
@@ -282,12 +293,16 @@ describe('computeStats', () => {
   it('debería ser una función', () => {
     expect(typeof computeStats).toBe('function');
   });
-  it('debería retornar un array', () => {
+  it('debería retornar un number', () => {
     expect(typeof computeStats(input2)).toBe('number');
   });
-  it('debería retornar output1 para input1', () => {
+  it('debería retornar 7 para input2', () => {
     expect(computeStats(input2)).toEqual(7);
   });
+  it('siempre debería ser menor a 10', () => {
+    expect(computeStats(input2)).toBeLessThan(10);
+  });
+
 });
 
 /* para una funcion:
