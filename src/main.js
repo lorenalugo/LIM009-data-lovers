@@ -1,7 +1,8 @@
 /* Manejo del DOM */
 /* Conection to json data */
-let jsonData;
-fetch('./data/lol/lol.json')
+let lolData;
+const getJson = (string) => {
+  fetch(string)
   .then((response) => {
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`);
@@ -9,18 +10,14 @@ fetch('./data/lol/lol.json')
     return response.json();
   })
   .then((json) => {
-    jsonData = json.data;
-    printAll(getAll(jsonData));
-  })
-  .catch((error) => {
-    console.log(`Error: ${error.message}`);
+    lolData = json.data;
+    return printAll(getAll(lolData));
   });
+}
 
-/* vars */
-let arr = [];
+getJson('./data/lol/lol.json');
 let arrFiltered = [];
 
-// shows and hides a block element
 const displayBlock = (showId, hideId) => {
   document.getElementById(hideId).classList.add('none');
   document.getElementById(showId).classList.remove('none');
@@ -30,7 +27,7 @@ const roleMenuBtn = document.getElementById('menu-content');
 roleMenuBtn.addEventListener('click', (event) => {
   document.getElementById('role-container').innerHTML = '';
   document.getElementById('submenu').classList.remove('none');
-  arrFiltered = roleFilter(jsonData, event.target.id);
+  arrFiltered = roleFilter(lolData, event.target.id);
   printCard(arrFiltered);
   document.getElementById('compute-stats').innerHTML = `Media Difficulty: ${computeStats(arrFiltered).toFixed(2)}`;// stats
   document.getElementById('sort-condition').innerHTML = event.target.id.toUpperCase();
@@ -41,7 +38,7 @@ roleMenuBtn.addEventListener('click', (event) => {
 const sortMenuBtn = document.getElementById('sort-menu');
 sortMenuBtn.addEventListener('click', (event) => {
   document.getElementById('role-container').innerHTML = '';
-  const sortResult = sortData(arrFiltered, event.target.dataset.skill, 'descendent');
+  const sortResult = sortData(arrFiltered, event.target.dataset.skill);
   printCard(sortResult);
   displayBlock('role-container', 'root'); 
   displayBlock('role-container', 'detailsContainer');
@@ -54,15 +51,14 @@ menuBtn.addEventListener('click', () => {
 /* end menu buttons */
 const gridClickImg = document.getElementById('root');
 gridClickImg.addEventListener('click', (event) => {
-  // console.log(e.target.alt); //porque el value proviene del object-keys (nombres de las propiedades del objeto data)
-  const profile = championDetails(jsonData, event.target.alt);
+  const profile = championDetails(lolData, event.target.alt);
   printDetails(profile);
   displayBlock('detailsContainer', 'root');
 });
 
 const seeMoreBtn = document.getElementById('role-container');
 seeMoreBtn.addEventListener('click', (event) => {
-  const profile = championDetails(LOL['data'], event.target.dataset.champion);
+  const profile = championDetails(lolData, event.target.dataset.champion);
   printDetails(profile);
   displayBlock('detailsContainer', 'role-container');
 });
